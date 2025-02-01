@@ -6,7 +6,7 @@
 /*   By: oel-mado <oel-mado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 16:55:11 by oel-mado          #+#    #+#             */
-/*   Updated: 2025/02/01 17:03:06 by oel-mado         ###   ########.fr       */
+/*   Updated: 2025/02/01 20:16:52 by oel-mado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,12 @@
 
 int main()
 {
-    
+	pid_t pid;
+
+	pid = getpid();
+	ft_printf("\033[1;32mServer ON\n\033[0m");
+	ft_printf("Process ID: \033[1;33m%d\033[0m", pid);
+
+	pause();
+	return 0;
 }

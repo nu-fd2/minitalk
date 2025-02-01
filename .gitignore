@@ -1,0 +1,8 @@
+*.o
+*.a
+*.out
+*.swp
+*.gch
+client
+server
+.DS_Store
