@@ -5,4 +5,5 @@
 *.gch
 client
 server
+.vscode
 .DS_Store

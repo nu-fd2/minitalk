@@ -6,7 +6,7 @@
 #    By: oel-mado <oel-mado@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/01 16:55:57 by oel-mado          #+#    #+#              #
-#    Updated: 2025/02/01 21:00:55 by oel-mado         ###   ########.fr        #
+#    Updated: 2025/02/04 19:42:50 by oel-mado         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,10 @@ msg:
 	@echo "do make s or make c"
 
 pf:
-	make -f ft_printf/Makefile all
+	make -C ft_printf re
 
 lb:
-	make -f libft/Makefile all
+	make -C libft re
 
 s: pf
 	cc server.c ft_printf/libftprintf.a -o server
@@ -28,12 +28,12 @@ c: lb pf
 	cc client.c libft/libft.a ft_printf/libftprintf.a -o client
 
 clean:
-	make -f ft_printf/Makefile clean
-	make -f libft/Makefile clean
+	make -C ft_printf clean
+	make -C libft clean
 
-fclean: clean
-	make -f ft_printf/Makefile fclean
-	make -f libft/Makefile fclean
+fclean:
+	make -C ft_printf fclean
+	make -C libft fclean
 	rm -f server client
 
 
