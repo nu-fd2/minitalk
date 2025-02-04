@@ -6,45 +6,48 @@
 /*   By: oel-mado <oel-mado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 15:17:06 by oel-mado          #+#    #+#             */
-/*   Updated: 2025/02/04 20:11:42 by oel-mado         ###   ########.fr       */
+/*   Updated: 2025/02/04 22:22:23 by oel-mado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	ft_puthex(int n)
+char	*to_bin(int n)
 {
-	char *base = "01";
+	int i;
+	char *bin;
 
-	if (n >= 2)
+    bin = malloc(9);
+	i = 7;
+	while (i >= 0)
 	{
-		ft_puthex(n / 2);
-		ft_putchar(base[n % 2]);
+		if (n % 2 == 0)
+			bin[i] = '0';
+		else
+			bin[i] = '1';
+		n /= 2;
+		i--;
 	}
-	else
-		ft_putchar(base[n]);
+	bin[8] = '\0';
+	return (bin);
 }
 
-// void to_bit(char *m_byte)
-// {
-// 	int i;
+void send_char(int c, int pid)
+{
+	int i;
+	char *bits;
 
-// 	while 
-// }
-
-// void send_char(int c, int pid)
-// {
-// 	int i;
-// 	char m_byte[8];
-// 	to_bit(m_byte);
-// 	while (i <= 7)
-// 	{
-// 		if ()
-// 			kill(pid, SIGUSR1);//0
-// 		else
-// 			kill(pid, SIGUSR2);//1
-// 	}
-// }
+	i = 0;
+	bits = to_bit(c);
+	while (i <= 7)
+	{
+		if (bits[i] == '0')
+			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
+	}
+	free(bits);
+}
 
 int main(int ac, char **av)
 {
