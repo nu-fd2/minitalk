@@ -6,16 +6,16 @@
 /*   By: oel-mado <oel-mado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 15:17:06 by oel-mado          #+#    #+#             */
-/*   Updated: 2025/03/14 15:37:18 by oel-mado         ###   ########.fr       */
+/*   Updated: 2025/03/14 16:49:19 by oel-mado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
 #include "libft/libft.h"
 
-void send_char(int c, int pid)
+void	send_char(int c, int pid)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 8)
@@ -29,19 +29,38 @@ void send_char(int c, int pid)
 	}
 }
 
-int main(int ac, char **av)
+void	val(char *pid)
 {
-	int i;
-	int pid;
+	int	i;
 
 	i = 0;
-	pid = ft_atoi(av[1]);
-	if (!av[1] || pid == 0 || !av[2] || ac > 3 || ac < 3)
+	while (pid[i])
 	{
-		if (pid == 0 || !av[1])
+		if (!ft_isdigit(pid[i]))
+		{
 			ft_printf("\033[31;1mInvalid PID\033[0m\n");
-		if (!av[2] || ac > 3 || ac < 3)
-			ft_printf("\033[33;1mDo: ./client <PID> \"MSG\"\033[0m\n");
+			exit(1);
+		}
+		i++;
+	}
+}
+
+int	main(int ac, char **av)
+{
+	int	i;
+	int	pid;
+
+	i = 0;
+	if (!av[2] || av[2][0] == '\0' || ac > 3 || ac < 3)
+	{
+		ft_printf("\033[33;1mTry ./client <PID> <MSG>\033[0m\n");
+		exit(1);
+	}
+	val(av[1]);
+	pid = ft_atoi(av[1]);
+	if (pid <= 0)
+	{
+		ft_printf("\033[31;1mInvalid PID\033[0m\n");
 		exit(1);
 	}
 	while (av[2][i])
