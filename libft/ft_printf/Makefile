@@ -6,7 +6,7 @@
 #    By: oel-mado <oel-mado@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/21 02:37:11 by oel-mado          #+#    #+#              #
-#    Updated: 2024/11/26 19:20:03 by oel-mado         ###   ########.fr        #
+#    Updated: 2025/03/14 12:19:20 by oel-mado         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,7 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = ft_printf.c src/ft_prints.c src/ft_putadr.c\
-		src/ft_putchar.c src/ft_puthex.c\
-		src/ft_putnbr.c src/ft_putstr.c
+SRC = 
 
 OBJ = ${SRC:.c=.o}
 

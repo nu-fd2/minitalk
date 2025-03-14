@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-mado <oel-mado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 19:19:00 by oel-mado          #+#    #+#             */
-/*   Updated: 2024/11/26 01:44:51 by oel-mado         ###   ########.fr       */
+/*   Created: 2024/11/24 04:39:49 by oel-mado          #+#    #+#             */
+/*   Updated: 2025/03/14 12:17:42 by oel-mado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "src/ft_printf.h"
+#include "../../libft.h"
 
-int	ft_printf(const char *rei, ...)
+int	ft_putstr(char *s)
 {
-	int		i;
-	int		size;
-	va_list	lain;
+	int	i;
 
-	va_start(lain, rei);
 	i = 0;
-	size = 0;
-	if (write(1, NULL, 0) == -1)
-		return (-1);
-	while (rei[i])
-	{
-		if (rei[i] == '%')
-		{
-			size += ft_prints(rei, lain, ++i);
-			i++;
-		}
-		else
-			size += ft_putchar(rei[i++]);
-	}
-	va_end(lain);
-	return (size);
+	if (!s)
+		return (ft_putstr("(null)"));
+	while (s[i])
+		ft_putchar(s[i++]);
+	return (i);
 }

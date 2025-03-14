@@ -6,7 +6,7 @@
 /*   By: oel-mado <oel-mado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:12:07 by oel-mado          #+#    #+#             */
-/*   Updated: 2024/11/14 22:56:07 by oel-mado         ###   ########.fr       */
+/*   Updated: 2025/03/14 12:28:25 by oel-mado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,22 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+int			ft_printf(const char *s, ...);
+
+int			ft_putchar(char c);
+int			ft_putnbr(long n);
+int			ft_putstr(char *s);
+int			ft_putadr(unsigned long n);
+int			ft_puthex(unsigned long n, const char *base);
+int			ft_prints(const char *rei, va_list lain, int i);
 
 size_t		ft_strlen(const char *who);
 size_t		ft_strlcpy(char *dst, const char *src, size_t n);

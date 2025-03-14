@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-mado <oel-mado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/01 16:54:55 by oel-mado          #+#    #+#             */
-/*   Updated: 2025/03/12 16:24:49 by oel-mado         ###   ########.fr       */
+/*   Created: 2024/11/24 04:36:36 by oel-mado          #+#    #+#             */
+/*   Updated: 2025/03/14 12:17:29 by oel-mado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-#define MINITALK_H
+#include "../../libft.h"
 
-#include "ft_printf/src/ft_printf.h"
-#include "libft/libft.h"
-#include <signal.h>
-
-#endif //MINITALK_H
+int	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}

@@ -6,11 +6,11 @@
 /*   By: oel-mado <oel-mado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 01:43:44 by oel-mado          #+#    #+#             */
-/*   Updated: 2024/11/26 01:44:30 by oel-mado         ###   ########.fr       */
+/*   Updated: 2025/03/14 12:17:15 by oel-mado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../../libft.h"
 
 int	ft_prints(const char *rei, va_list lain, int i)
 {

@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-mado <oel-mado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/24 04:06:54 by oel-mado          #+#    #+#             */
-/*   Updated: 2024/11/26 19:20:42 by oel-mado         ###   ########.fr       */
+/*   Created: 2024/11/19 19:19:00 by oel-mado          #+#    #+#             */
+/*   Updated: 2025/03/14 12:17:50 by oel-mado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../libft.h"
 
-# include <unistd.h>
-# include <stdarg.h>
+int	ft_printf(const char *rei, ...)
+{
+	int		i;
+	int		size;
+	va_list	lain;
 
-int	ft_printf(const char *s, ...);
-
-int	ft_putchar(char c);
-int	ft_putnbr(long n);
-int	ft_putstr(char *s);
-int	ft_putadr(unsigned long n);
-int	ft_puthex(unsigned long n, const char *base);
-int	ft_prints(const char *rei, va_list lain, int i);
-
-#endif //FT_PRINTF_H
+	va_start(lain, rei);
+	i = 0;
+	size = 0;
+	if (write(1, NULL, 0) == -1)
+		return (-1);
+	while (rei[i])
+	{
+		if (rei[i] == '%')
+		{
+			size += ft_prints(rei, lain, ++i);
+			i++;
+		}
+		else
+			size += ft_putchar(rei[i++]);
+	}
+	va_end(lain);
+	return (size);
+}

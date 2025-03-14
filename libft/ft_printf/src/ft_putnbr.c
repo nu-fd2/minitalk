@@ -6,11 +6,11 @@
 /*   By: oel-mado <oel-mado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 04:38:24 by oel-mado          #+#    #+#             */
-/*   Updated: 2024/11/24 15:22:53 by oel-mado         ###   ########.fr       */
+/*   Updated: 2025/03/14 12:17:38 by oel-mado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../../libft.h"
 
 static int	ft_intlen(long nbr)
 {
