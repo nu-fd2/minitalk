@@ -6,7 +6,7 @@
 /*   By: oel-mado <oel-mado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 16:55:11 by oel-mado          #+#    #+#             */
-/*   Updated: 2025/03/14 12:57:49 by oel-mado         ###   ########.fr       */
+/*   Updated: 2025/03/14 15:37:26 by oel-mado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,27 @@
 
 void sighand(int signum)
 {
-	static char *byte;
+	static char byte;
 	static int i;
 
-	i = 0;
-	
-	if (signum == SIGUSR2)
-		ft_printf("1");
-	else if (signum == SIGUSR1)
-		ft_printf("0");
+	byte = byte | (signum == SIGUSR2);
+	i++;
+	if (i == 8)
+	{
+		if (byte != '\0')
+			ft_printf("%c", byte);
+		else
+			ft_printf("\n");
+		i = 0;
+		ft_bzero(&byte, 1);
+	}
+	else
+		byte = byte << 1;
 }
 
 int main()
 {
-	ft_printf("Process ID: \033[1;33m%d\n\033[0m", getpid());
+	ft_printf("PID: \033[1;33m%d\n\033[0m", getpid());
 	signal(SIGUSR1, sighand);
 	signal(SIGUSR2, sighand);
 	while (69)
