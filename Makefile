@@ -6,7 +6,7 @@
 #    By: oel-mado <oel-mado@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/01 16:55:57 by oel-mado          #+#    #+#              #
-#    Updated: 2025/03/14 16:16:02 by oel-mado         ###   ########.fr        #
+#    Updated: 2025/03/15 20:19:35 by oel-mado         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ LB = libft/libft.a
 
 CFLAGS = -Wall -Wextra -Werror
 
-cs: client server
+all: client server
 
 $(LB):
 	make -C libft re
