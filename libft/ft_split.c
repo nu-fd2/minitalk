@@ -74,10 +74,8 @@ static char	**m_lit(char **arr, int word, const char *str, char c)
 char	**ft_split(const char *str, char c)
 {
 	int		word;
-	int		i;
 	char	**arr;
 
-	i = 0;
 	if (!str)
 		return (NULL);
 	word = f_words(str, c);

@@ -20,10 +20,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 	f = 0;
 	if (!s1 || !set)
 		return (NULL);
-	if (s1 == '\0')
+	if (s1 == NULL)
 		return (ft_calloc(sizeof(char), 1));
 	l = ft_strlen(s1);
-	if (set == '\0' || !l)
+	if (set == NULL || !l)
 		return (ft_strdup(s1));
 	l--;
 	while (s1[f] && ft_strchr(set, s1[f]))

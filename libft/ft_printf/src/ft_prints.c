@@ -30,9 +30,9 @@ int	ft_prints(const char *rei, va_list lain, int i)
 	else if (rei[i] == '%')
 		return (ft_putchar('%'));
 	else if (rei[i] == 'x')
-		return (ft_puthex((unsigned int)va_arg(lain, void *), down));
+		return (ft_puthex((unsigned long)va_arg(lain, void *), down));
 	else if (rei[i] == 'X')
-		return (ft_puthex((unsigned int)va_arg(lain, void *), up));
+		return (ft_puthex((unsigned long)va_arg(lain, void *), up));
 	else if (rei[i] == 'p')
 		return (ft_putadr((unsigned long)va_arg(lain, void *)));
 	return (0);
