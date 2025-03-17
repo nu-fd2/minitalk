@@ -6,7 +6,7 @@
 /*   By: oel-mado <oel-mado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 15:17:06 by oel-mado          #+#    #+#             */
-/*   Updated: 2025/03/14 16:49:19 by oel-mado         ###   ########.fr       */
+/*   Updated: 2025/03/16 22:02:20 by oel-mado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	main(int ac, char **av)
 	}
 	val(av[1]);
 	pid = ft_atoi(av[1]);
-	if (pid <= 0)
+	if (pid <= 0 || kill(pid, 0) == -1)
 	{
 		ft_printf("\033[31;1mInvalid PID\033[0m\n");
 		exit(1);
