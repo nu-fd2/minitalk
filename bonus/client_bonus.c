@@ -6,7 +6,7 @@
 /*   By: oel-mado <oel-mado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 15:17:06 by oel-mado          #+#    #+#             */
-/*   Updated: 2025/03/19 23:58:28 by oel-mado         ###   ########.fr       */
+/*   Updated: 2025/03/20 00:38:35 by oel-mado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	sigpr(int signum, siginfo_t *info, void *cnt)
 	(void)info;
 	(void)cnt;
 	if (signum == SIGUSR1)
-		ft_printf("\033[1;32mstring wsl\033[0m\n");
+		ft_printf("\033[1;32mMSG is received\033[0m\n");
 }
 
 void	send_char(int c, int pid)
