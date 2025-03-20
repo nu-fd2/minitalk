@@ -15,8 +15,8 @@
 
 void	sigpr(int signum, siginfo_t *info, void *cnt)
 {
-	info = 0;
-	cnt = 0;
+	(void)info;
+	(void)cnt;
 	if (signum == SIGUSR1)
 		ft_printf("\033[1;32mstring wsl\033[0m\n");
 }

@@ -19,6 +19,7 @@ void	sighand(int signum, siginfo_t *info, void *cnt)
 	static int		i;
 	static int		pid;
 
+	(void)cnt;
 	if (pid != info->si_pid)
 	{
 		i = 0;
@@ -27,7 +28,6 @@ void	sighand(int signum, siginfo_t *info, void *cnt)
 	}
 	byte = byte | (signum == SIGUSR2);
 	i++;
-	cnt = 0;
 	if (i == 8)
 	{
 		if (byte != '\0')
