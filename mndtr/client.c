@@ -6,7 +6,7 @@
 /*   By: oel-mado <oel-mado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 15:17:06 by oel-mado          #+#    #+#             */
-/*   Updated: 2025/03/19 23:58:39 by oel-mado         ###   ########.fr       */
+/*   Updated: 2025/03/21 03:31:10 by oel-mado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	send_char(int c, int pid)
 		else
 			kill(pid, SIGUSR1);
 		i++;
-		usleep(128);
+		usleep(512);
 	}
 }
 

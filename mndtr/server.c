@@ -6,7 +6,7 @@
 /*   By: oel-mado <oel-mado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 16:55:11 by oel-mado          #+#    #+#             */
-/*   Updated: 2025/03/19 23:58:44 by oel-mado         ###   ########.fr       */
+/*   Updated: 2025/03/24 04:54:46 by oel-mado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,11 @@ void	sighand(int signum, siginfo_t *info, void *cnt)
 	}
 	byte = byte | (signum == SIGUSR2);
 	i++;
-	if (i == 8)
+	if (i >= 8)
 	{
-		if (byte != '\0')
-			ft_printf("%c", byte);
-		i = 0;
+		ft_printf("%c", byte);
 		byte = 0;
+		i = 0;
 	}
 	else
 		byte = byte << 1;
