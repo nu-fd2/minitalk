@@ -6,7 +6,7 @@
 /*   By: oel-mado <oel-mado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 15:17:06 by oel-mado          #+#    #+#             */
-/*   Updated: 2025/03/20 00:38:35 by oel-mado         ###   ########.fr       */
+/*   Updated: 2025/03/26 00:21:35 by oel-mado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	send_char(int c, int pid)
 		else
 			kill(pid, SIGUSR1);
 		i++;
-		usleep(128);
+		usleep(512);
 	}
 }
 
@@ -62,7 +62,6 @@ int	main(int ac, char **av)
 	i = 0;
 	ft_memset(&c_sig, 0, sizeof(c_sig));
 	c_sig.sa_sigaction = sigpr;
-	c_sig.sa_flags = SA_SIGINFO;
 	if (!av[2] || av[2][0] == '\0' || ac > 3 || ac < 3)
 	{
 		ft_printf("\033[33;1mTry ./client <PID> <MSG>\033[0m\n");

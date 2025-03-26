@@ -6,12 +6,12 @@
 /*   By: oel-mado <oel-mado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 16:55:11 by oel-mado          #+#    #+#             */
-/*   Updated: 2025/03/24 04:54:46 by oel-mado         ###   ########.fr       */
+/*   Updated: 2025/03/26 00:07:57 by oel-mado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
 #include "../libft/libft.h"
+#include <signal.h>
 
 void	sighand(int signum, siginfo_t *info, void *cnt)
 {
@@ -44,7 +44,6 @@ int	main(void)
 
 	ft_memset(&s_sig, 0, sizeof(s_sig));
 	s_sig.sa_sigaction = sighand;
-	s_sig.sa_flags = SA_SIGINFO;
 	ft_printf("PID: \033[1;33m%d\n\033[0m", getpid());
 	sigaction(SIGUSR1, &s_sig, NULL);
 	sigaction(SIGUSR2, &s_sig, NULL);
