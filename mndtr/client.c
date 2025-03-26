@@ -6,12 +6,11 @@
 /*   By: oel-mado <oel-mado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 15:17:06 by oel-mado          #+#    #+#             */
-/*   Updated: 2025/03/26 00:15:21 by oel-mado         ###   ########.fr       */
+/*   Updated: 2025/03/26 04:57:22 by oel-mado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include <signal.h>
+#include "minitalk.h"
 
 void	send_char(int c, int pid)
 {
@@ -36,9 +35,9 @@ void	val(char *pid)
 	i = 0;
 	while (pid[i])
 	{
-		if (!ft_isdigit(pid[i]))
+		if (!(pid[i] >= '0' && pid[i] <= '9'))
 		{
-			ft_printf("\033[31;1mInvalid PID\033[0m\n");
+			write(1, "\033[31;1mInvalid PID\033[0m\n", 23);
 			exit(1);
 		}
 		i++;
@@ -47,24 +46,24 @@ void	val(char *pid)
 
 int	main(int ac, char **av)
 {
-	int	i;
-	int	pid;
+	int		i;
+	long	pid;
 
 	i = 0;
 	if (!av[2] || av[2][0] == '\0' || ac > 3 || ac < 3)
 	{
-		ft_printf(" ;1mTry ./client <PID> <MSG>\033[0m\n");
+		write(1, "\033[33;1mTry ./client <PID> <MSG>\033[0m\n", 36);
 		exit(1);
 	}
 	val(av[1]);
-	pid = ft_atoi(av[1]);
-	if (pid <= 0 || kill(pid, 0) == -1)
+	pid = ft_atol(av[1]);
+	if ((pid <= 0 || kill((int)pid, 0) == -1) || pid > 2147483647)
 	{
-		ft_printf("\033[31;1mInvalid PID\033[0m\n");
+		write(1, "\033[31;1mInvalid PID\033[0m\n", 23);
 		exit(1);
 	}
 	while (av[2][i])
-		send_char(av[2][i++], pid);
-	send_char('\0', pid);
+		send_char(av[2][i++], (int)pid);
+	send_char('\0', (int)pid);
 	return (0);
 }
