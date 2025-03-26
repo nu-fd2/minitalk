@@ -6,7 +6,7 @@
 #    By: oel-mado <oel-mado@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/01 16:55:57 by oel-mado          #+#    #+#              #
-#    Updated: 2025/03/19 23:57:05 by oel-mado         ###   ########.fr        #
+#    Updated: 2025/03/26 00:36:40 by oel-mado         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,4 +44,4 @@ fclean:
 	rm -f server client
 	rm -f server_bonus client_bonus
 
-.PHONY: re all clean fclean bonus
+.PHONY: re all clean fclean bonus server client server_bonus client_bonus
