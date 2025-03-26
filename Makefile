@@ -6,42 +6,35 @@
 #    By: oel-mado <oel-mado@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/01 16:55:57 by oel-mado          #+#    #+#              #
-#    Updated: 2025/03/26 01:49:38 by oel-mado         ###   ########.fr        #
+#    Updated: 2025/03/26 16:53:10 by oel-mado         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LB = libft/libft.a
 
 CFLAGS = -Wall -Wextra -Werror
 
-all: client server
+NAME = client
 
-bonus: client_bonus server_bonus
+SNAME = server
 
-$(LB):
-	make -C libft re
-	make -C libft clean
+CLN = src/client.c src/utils.c
 
-server: mndtr/server.c $(LB)
-	cc $(CFLAGS) mndtr/server.c $(LB) -o server
+OBJ = $(CLN:.c=.o)
 
-client: mndtr/client.c $(LB)
-	cc $(CFLAGS) mndtr/client.c $(LB) -o client
+all: $(NAME)
 
-client_bonus: bonus/client_bonus.c $(LB)
-	cc $(CFLAGS) bonus/client_bonus.c $(LB) -o client_bonus
+$(NAME): $(OBJ)
+	cc $(CFLAGS) $(OBJ) -o $(NAME)
 
-server_bonus: bonus/server_bonus.c $(LB)
-	cc $(CFLAGS) bonus/server_bonus.c $(LB) -o server_bonus
+%.o: src/%.c src/minitalk.h
+	cc $(CFLAGS) $< -c $@
+
+clean:
+	rm $(OBJ)
+
+fclean: clean
+	rm $(NAME)
 
 re: fclean all
 
-clean:
-	make -C libft clean
-
-fclean:
-	make -C libft fclean
-	rm -f server client
-	rm -f server_bonus client_bonus
-
-.PHONY: re all clean fclean bonus server client server_bonus client_bonus
+.PHONY: re all clean fclean
