@@ -6,7 +6,7 @@
 #    By: oel-mado <oel-mado@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/01 16:55:57 by oel-mado          #+#    #+#              #
-#    Updated: 2025/03/26 16:53:10 by oel-mado         ###   ########.fr        #
+#    Updated: 2025/03/27 02:21:53 by oel-mado         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,24 +17,44 @@ NAME = client
 
 SNAME = server
 
-CLN = src/client.c src/utils.c
+BNAME = client_bonus
 
-OBJ = $(CLN:.c=.o)
+BSNAME = server_bonus
 
-all: $(NAME)
+SRC = src/client.c src/server.c src/utils.c
 
-$(NAME): $(OBJ)
-	cc $(CFLAGS) $(OBJ) -o $(NAME)
+BSRC = bonus/client_bonus.c bonus/server_bonus.c bonus/utils_bonus.c
 
-%.o: src/%.c src/minitalk.h
+OBJ = $(SRC:.c=.o)
+
+BOBJ = $(BSRC:.c=.o)
+
+all: $(NAME) $(SNAME)
+
+bonus: $(BNAME) $(BSNAME)
+
+$(NAME): $(OBJ) src/minitalk.h
+	cc $(CFLAGS) src/client.o src/utils.o -o $(NAME)
+
+$(SNAME): $(OBJ) src/minitalk.h
+	cc $(CFLAGS) src/server.o src/utils.o -o $(SNAME)
+
+$(BNAME): $(BOBJ) bonus/minitalk_bonus.h
+	cc $(CFLAGS) bonus/client_bonus.o bonus/utils_bonus.o -o $(BNAME)
+
+$(BSNAME): $(BOBJ) bonus/minitalk_bonus.h
+	cc $(CFLAGS) bonus/server_bonus.o bonus/utils_bonus.o -o $(BSNAME)
+
+%.o: src/%.c 
 	cc $(CFLAGS) $< -c $@
 
 clean:
-	rm $(OBJ)
+	rm -f $(OBJ) $(BOBJ)
 
 fclean: clean
-	rm $(NAME)
+	rm -f $(NAME) $(SNAME)
+	rm -f $(BNAME) $(BSNAME)
 
 re: fclean all
 
-.PHONY: re all clean fclean
+.PHOMY: all clean fclean re bonus
